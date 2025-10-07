@@ -1,0 +1,43 @@
+name: Benchmark
+
+on:
+  workflow_dispatch:
+
+jobs:
+  benchmark:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: Benchmarks/
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install jemalloc (Ubuntu)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get -q update
+          sudo apt-get install -y libjemalloc-dev
+
+      - name: Install jemalloc (macOS)
+        if: runner.os == 'macOS'
+        run: |
+          brew install jemalloc
+
+      - uses: swift-actions/setup-swift@v2
+        with:
+          swift-version: "6.1"
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - working-directory: js/
+        run: pnpm install
+
+      - run: swift package benchmark --format markdown --no-progress >> $GITHUB_STEP_SUMMARY

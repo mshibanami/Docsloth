@@ -1,0 +1,38 @@
+{
+  "name": "docsloth",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run build:markdown-it && npm run build:markdown-it-gfm && npm run build:markdown-it-gfm-cjk-friendly && npm run build:asciidoctor",
+    "build:markdown-it": "CONVERTER=markdown-it vite build",
+    "build:markdown-it-gfm": "CONVERTER=markdown-it-gfm vite build",
+    "build:markdown-it-gfm-cjk-friendly": "CONVERTER=markdown-it-gfm-cjk-friendly vite build",
+    "build:asciidoctor": "CONVERTER=asciidoctor vite build",
+    "create-auto-follow-pr": "tsx scripts/create-auto-follow-pr.ts"
+  },
+  "dependencies": {
+    "@mshibanami-org/markdown-it-sanitize-html": "^1.0.10",
+    "asciidoctor": "^3.0.4",
+    "markdown-it": "^14.1.0",
+    "markdown-it-cjk-friendly": "^1.3.1",
+    "markdown-it-emoji": "^3.0.0",
+    "markdown-it-footnote": "^4.0.0",
+    "markdown-it-github-alerts": "^1.0.0",
+    "markdown-it-task-checkbox": "^1.0.6"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/markdown-it-emoji": "^3.0.1",
+    "@types/markdown-it-footnote": "^3.0.4",
+    "@types/node": "^24.7.0",
+    "npm-check-updates": "^19.0.0",
+    "rollup-plugin-license": "^3.6.0",
+    "tsx": "^4.20.6",
+    "typescript": "~5.9.3",
+    "vite": "^7.1.9",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}

@@ -1,0 +1,40 @@
+name: Test
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: macos-26 # TODO: Use `macos-latest`` and set `swift-version: "6.2"` for swift-actions/setup-swift once they support 6.2
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '26'
+
+      # - uses: swift-actions/setup-swift@v2
+      #   with:
+      #     swift-version: "6.1"
+
+      - name: Show Swift version
+        run: swift --version
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - working-directory: js/
+        run: pnpm install
+
+      # FIXME: We can't use `swift test` because it doesn't generate color symbols in xcassets since it's generrated by actool.
+      - run: xcodebuild -scheme Docsloth-Package -destination "platform=macOS" test
