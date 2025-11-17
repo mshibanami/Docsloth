@@ -49,7 +49,7 @@ async function main() {
     console.log("Running: ncu -u");
     const ncuOutput = run(`pnpx npm-check-updates@latest -u`);
     console.log(ncuOutput || "(no ncu output)");
-    console.log("Running: npm install");
+    console.log("Running: pnpm install");
     run(`pnpm install`, { stdio: "inherit" });
     console.log("Running: pnpm run build");
     try {
@@ -60,7 +60,7 @@ async function main() {
 
     const status = run(`git status --porcelain`);
     if (!status.trim()) {
-        console.log("依存更新による変更はありません。終了します。");
+        console.log("No dependency changes found. Finishing...");
         return;
     }
 
