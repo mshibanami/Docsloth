@@ -31,6 +31,6 @@ jobs:
       - run: |
           pnpm install
 
-      - run: npm run create-auto-follow-pr
+      - run: pnpm run create-auto-follow-pr
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
