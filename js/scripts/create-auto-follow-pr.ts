@@ -49,8 +49,8 @@ async function main() {
     console.log("Running: ncu -u");
     const ncuOutput = run(`pnpx npm-check-updates@latest -u`);
     console.log(ncuOutput || "(no ncu output)");
-    console.log("Running: pnpm install");
-    run(`pnpm install`, { stdio: "inherit" });
+    console.log("Running: pnpm install --no-frozen-lockfile");
+    run(`pnpm install --no-frozen-lockfile`, { stdio: "inherit" });
     console.log("Running: pnpm run build");
     try {
         run(`pnpm run build`, { stdio: "inherit" });
