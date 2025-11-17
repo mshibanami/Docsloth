@@ -10,8 +10,7 @@
     "build:markdown-it": "CONVERTER=markdown-it vite build",
     "build:markdown-it-gfm": "CONVERTER=markdown-it-gfm vite build",
     "build:markdown-it-gfm-cjk-friendly": "CONVERTER=markdown-it-gfm-cjk-friendly vite build",
-    "build:asciidoctor": "CONVERTER=asciidoctor vite build",
-    "create-auto-follow-pr": "tsx scripts/create-auto-follow-pr.ts"
+    "build:asciidoctor": "CONVERTER=asciidoctor vite build"
   },
   "dependencies": {
     "@mshibanami-org/markdown-it-sanitize-html": "^1.0.10",

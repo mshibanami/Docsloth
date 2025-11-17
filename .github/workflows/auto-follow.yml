@@ -1,4 +1,4 @@
-name: Auto Dependencies Update
+name: Create a Dependency Update PR
 
 on:
   workflow_dispatch:
@@ -28,9 +28,23 @@ jobs:
         with:
           version: 10
 
-      - run: |
-          pnpm install
+      - run: pnpm install
 
-      - run: pnpm run create-auto-follow-pr
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: pnpx npm-check-updates@latest -u
+
+      - run: pnpm install --no-frozen-lockfile
+
+      - name: Create Pull Request from Issue
+        uses: peter-evans/create-pull-request@v3
+        with:
+          # Use PAT to run workflows for the pull request created by this action.
+          token: ${{ secrets.PAT_PR_CREATING_GITHUB_TOKEN }}
+          title: "Auto update dependencies"
+          body: "This PR updates dependencies to their latest versions."
+          base: main
+          branch: auto-dependency-update
+          commit-message: "Update dependencies"
+          committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          delete-branch: true
