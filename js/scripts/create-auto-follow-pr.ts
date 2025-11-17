@@ -47,13 +47,13 @@ async function main() {
     run(`git pull --ff-only origin ${defaultBranch}`);
 
     console.log("Running: ncu -u");
-    const ncuOutput = run(`npx npm-check-updates@latest -u`);
+    const ncuOutput = run(`pnpx npm-check-updates@latest -u`);
     console.log(ncuOutput || "(no ncu output)");
     console.log("Running: npm install");
-    run(`npm install`, { stdio: "inherit" });
-    console.log("Running: npm run build");
+    run(`pnpm install`, { stdio: "inherit" });
+    console.log("Running: pnpm run build");
     try {
-        run(`npm run build`, { stdio: "inherit" });
+        run(`pnpm run build`, { stdio: "inherit" });
     } catch (e) {
         throw e;
     }
