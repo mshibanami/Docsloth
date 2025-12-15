@@ -187,9 +187,11 @@
     "self": false,
     "name": "@mshibanami-org/markdown-it-sanitize-html",
     "maintainers": [],
-    "version": "1.0.10",
+    "version": "1.0.12",
     "description": "A markdown-it plugin to sanitize HTML using sanitize-html.",
-    "repository": null,
+    "repository": {
+      "url": "https://github.com/mshibanami/markdown-it-sanitize-html.git"
+    },
     "homepage": null,
     "private": false,
     "license": "MIT",
