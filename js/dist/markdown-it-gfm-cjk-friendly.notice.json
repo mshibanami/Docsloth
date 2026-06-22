@@ -55,7 +55,7 @@
     "self": false,
     "name": "markdown-it",
     "maintainers": [],
-    "version": "14.1.0",
+    "version": "14.2.0",
     "description": "Markdown-it - modern pluggable markdown parser.",
     "repository": "markdown-it/markdown-it",
     "homepage": null,
@@ -70,7 +70,7 @@
     "self": false,
     "name": "linkify-it",
     "maintainers": [],
-    "version": "5.0.0",
+    "version": "5.0.1",
     "description": "Links recognition library with FULL unicode support",
     "repository": "markdown-it/linkify-it",
     "homepage": null,
@@ -128,7 +128,7 @@
     "self": false,
     "name": "markdown-it-github-alerts",
     "maintainers": [],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Support GitHub-style alerts for markdown-it",
     "repository": {
       "type": "git",
@@ -206,7 +206,7 @@
     "self": false,
     "name": "markdown-it-cjk-friendly",
     "maintainers": [],
-    "version": "1.3.2",
+    "version": "2.0.2",
     "description": "markdown-it plugin to make Markdown emphasis (`**`) in CommonMark more friendly with Chinese, Japanese, and Korean (CJK)",
     "repository": {
       "url": "https://github.com/tats-u/markdown-cjk-friendly"
